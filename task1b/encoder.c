@@ -40,6 +40,12 @@ int main (int argc , char* argv[], char* envp[])
       system_call(SYS_WRITE,STDERR,itoa(SYS_READ),4);
       system_call(SYS_WRITE,STDERR,itoa(size),4);
       system_call(SYS_WRITE,STDERR,"\n",1);
+      system_call(SYS_WRITE,STDERR,itoa(SYS_OPEN),4);
+      system_call(SYS_WRITE,STDERR,itoa(output),4);
+      system_call(SYS_WRITE,STDERR,"\n",1);
+      system_call(SYS_WRITE,STDERR,itoa(SYS_OPEN),4);
+      system_call(SYS_WRITE,STDERR,itoa(input),4);
+      system_call(SYS_WRITE,STDERR,"\n",1);
       system_call(SYS_WRITE,STDERR,itoa(SYS_WRITE),4);
       system_call(SYS_WRITE,STDERR,itoa(write),4);
       system_call(SYS_WRITE,STDERR,"\n",1);
