@@ -19,6 +19,13 @@ int main (int argc , char* argv[], char* envp[])
       system_call(SYS_WRITE,STDOUT,argv[i],strlen(argv[i]));
       system_call(SYS_WRITE,STDOUT,"\n",1);
       system_call(SYS_WRITE,STDOUT,"hello world! \n",14);
+      
     }
+  char* pathname = "greeting";
+  int file = system_call(5,pathname,2,0777);
+  int namepos = ;
+  system_call(19,file,namepos,0);
+  system_call(SYS_WRITE,file,"eden",4);
+  
   return 0;
 }
