@@ -23,9 +23,9 @@ int main (int argc , char* argv[], char* envp[])
     }
   char* pathname = "greeting";
   int file = system_call(5,pathname,2,0777);
-  int namepos = ;
+  int namepos = 291;
   system_call(19,file,namepos,0);
-  system_call(SYS_WRITE,file,"eden",4);
+  system_call(SYS_WRITE,file,"edena.",6);
   
   return 0;
 }
