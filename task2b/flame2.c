@@ -76,6 +76,12 @@ int main (int argc , char* argv[], char* envp[])
       system_call(SYS_WRITE,output,"system result:",14);
       system_call(SYS_WRITE,STDERR,itoa(fd),4);
       system_call(SYS_WRITE,STDERR,"\n",1);
+      system_call(SYS_WRITE,STDERR,"system op:",10);
+      system_call(SYS_WRITE,STDERR,itoa(SYS_CLOSE),4);
+      system_call(SYS_WRITE,output,"\n",1);
+      system_call(SYS_WRITE,output,"system result:",14);
+      system_call(SYS_WRITE,STDERR,itoa(close),4);
+      system_call(SYS_WRITE,STDERR,"\n",1);
   }
   return 0;
 }
