@@ -29,6 +29,7 @@ int main (int argc , char* argv[], char* envp[])
   int i = 0;
   char type_arg;
   int suffix = 0;
+  int infected = 0;
   ent* entd = buffer;
   for(j=1;j<argc;j++){
       if(strcmp(argv[j],"-d")==0){
@@ -38,6 +39,10 @@ int main (int argc , char* argv[], char* envp[])
           type_arg = argv[j + 1][0];
           suffix = 1;
       }
+      else if (strcmp(argv[i],"-a")==0){
+          infected = 1;
+      }
+        
   }
   fd = system_call(SYS_OPEN,".",0,0777);
   
@@ -47,11 +52,13 @@ int main (int argc , char* argv[], char* envp[])
   
   while(count>28){
     entd = buffer + i ;
-    int length = 0;
-    while(entd->buf[length]!=0)
-        length = length + 1;
+    int length = strlen(entd->buf);
 
     if(!suffix || entd->buf[length-1]==type_arg){
+        if(infected){
+            infection();
+            infection(entd->buf);
+        }
         system_call(SYS_WRITE,output,"file name:",11);
         system_call(SYS_WRITE,output,entd->buf,10);
         system_call(SYS_WRITE,output,"\n",1);
@@ -68,7 +75,7 @@ int main (int argc , char* argv[], char* envp[])
   int closed = system_call(SYS_CLOSE,fd);
   if(fd<0||closed<0)
       system_call(SYS_EXIT,55,1,1);
-  infection();
+  
   if(debug){
       system_call(SYS_WRITE,STDERR,"system op:",10);
       system_call(SYS_WRITE,STDERR,itoa(SYS_OPEN),4);
